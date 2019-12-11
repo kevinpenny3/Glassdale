@@ -1,0 +1,21 @@
+dialog {
+    height: 25%;
+    width: 75%;
+    justify-content: center;
+}
+
+dialog div {
+    text-align: center;
+    margin: 30px;
+}
+
+.button--close {
+    position: relative;
+    left: 47%;
+    text-decoration: none;
+    border: none;
+    background-color: lightgray;
+    padding: 10px;
+    display: auto;
+    margin-top: 1%;
+}
