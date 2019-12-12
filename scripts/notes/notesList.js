@@ -1,4 +1,5 @@
-import { getNotes, useNotes } from "./NoteProvider.js"
+import { getNotes, useNotes, deleteNote } from "./NoteProvider.js"
+
 
 
 
@@ -21,6 +22,30 @@ const NoteListComponent = () => {
         contentTarget.innerHTML =``
     })
 
+    eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("deleteNote--")) {
+        const [prefix, id] = clickEvent.target.id.split("--")
+
+        
+        const message = new CustomEvent("deleteNoteClicked", {
+            detail: {
+                noteId: id
+            }
+        })
+
+        eventHub.dispatchEvent(message)
+        
+        
+        /*
+            Invoke the function that performs the delete operation.
+
+            Once the operation is complete you should THEN invoke
+            useNotes() and render the note list again.
+        */
+       deleteNote(id).then( () => render(useNotes()) )
+    }
+})
+
     const render = (notesCollection) => {
         
         
@@ -31,6 +56,7 @@ const NoteListComponent = () => {
                 <div>Note: ${individualNote.suspect}</div>
                 <div>Criminal: ${individualNote.text}</div>
                 <div>Date: ${new Date(individualNote.date).toLocaleDateString('en-US')}</div>
+                <button id="deleteNote--${individualNote.id}">Delete</button>
                 </section>
                 `
             }

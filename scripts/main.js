@@ -4,11 +4,13 @@ import ConvictionSelect from "./convictions/ConvictionsSelect.js";
 import { getConvictions } from "./convictions/ConvictionsDataProvider.js";
 import noteFormComponent from "./notes/noteForm.js";
 import NoteListComponent from "./notes/notesList.js";
-import { getNotes } from "./notes/NoteProvider.js";
+import { getNotes, deleteNote } from "./notes/NoteProvider.js";
 import initializeDetailButtonEvents from "./dialogs/criminalDialogs.js";
 import { getWitnesses } from "./witnesses/witnessProvider.js";
 import WitnessListComponent from "./witnesses/witnessList.js";
 import witnessComponent from "./witnesses/witnessComponent.js";
+
+
 
 
 
@@ -33,6 +35,3 @@ getWitnesses().then(
     ).then(
     () => witnessComponent()
     )
-
-
-// getCriminals().then(CriminalListComponent) ---- short hand version
