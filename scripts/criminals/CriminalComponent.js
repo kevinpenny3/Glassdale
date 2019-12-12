@@ -3,7 +3,7 @@ const CriminalComponent = (criminal) => {
 
     return `
         <section class="criminal--card">
-            <header>${criminal.name}</header>
+            <header class="criminalFullName">${criminal.name}</header>
             <br>
             <div class="criminal--info">
             <div>Age: ${criminal.age}</div>
@@ -13,8 +13,9 @@ const CriminalComponent = (criminal) => {
             </div>
             <button class="criminalDialogButton" id="criminal--${criminalName}">Known Associates</button>
             <dialog class="dialog--button" id="details--${criminalName}">
-            <div>Associates: ${criminal.known_associates.map((individualName) =>{return individualName.name}).join(", ")}</div>
-            <div>Alibi: ${criminal.known_associates.map((individualAlibi) => {return individualAlibi.alibi}).join(", ")}</div>
+            <div>Known Associates</div>
+            <div>Associate: ${criminal.known_associates.map((individualName) =>{return individualName.name}).join(", ")} </div>
+            <div>Alibi: ${criminal.known_associates.map((individualAlibi) => {return individualAlibi.alibi}).join(", ")} </div>
                 <button class="button--close">Close Dialog</button>
             </dialog>
 

@@ -5,11 +5,18 @@
 }
 
 .criminal--card {
+    background: rgb(233, 232, 232);
     flex-basis: 18%;
-    border: 1px solid black;
-    padding: 10px;
     align: center;
     margin: 5px;
+}
+
+.criminal--info {
+    padding: 0px 10px 0px 10px;
+}
+
+.criminalFullName {
+    padding: 5px 0px 0px 10px;
 }
 
 header {
@@ -19,7 +26,7 @@ header {
 .criminalDialogButton {
     width: 100%;
     border: none;
-    background-color: rgb(230, 228, 228);
+    background-color:  rgb(144, 196, 190);
     padding: 3%;
     margin-top: 10%;
     margin-bottom: 0%;

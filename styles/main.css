@@ -1,6 +1,7 @@
 @import 'criminals.css';
 @import 'notes.css';
 @import 'dialog.css';
+@import 'witnesses.css';
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

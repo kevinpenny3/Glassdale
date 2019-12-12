@@ -16,6 +16,11 @@ const NoteListComponent = () => {
         )
     })
 
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id === "hideNotes")
+        contentTarget.innerHTML =``
+    })
+
     const render = (notesCollection) => {
         
         

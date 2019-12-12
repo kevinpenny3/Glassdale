@@ -46,6 +46,9 @@ const render = () => {
     <div class="note__field">
     <input type="submit" value="Show Notes" id="showNotes">
     </div>
+    <div class="note__field">
+    <input type="submit" value="Hide Notes" id="hideNotes">
+    </div>
 
     `
 }
