@@ -2,6 +2,25 @@
 @import 'notes.css';
 @import 'dialog.css';
 @import 'witnesses.css';
+@import 'selects.css';
+
+.pageHeader {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(22, 22, 58);
+    height: 70px;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 3px;
+    font-size: 30px;
+}
+
+.pageHeader--title {
+    margin-top: 15px;
+}
+
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
