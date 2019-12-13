@@ -56,7 +56,7 @@ const NoteListComponent = () => {
                 <div>Note: ${individualNote.suspect}</div>
                 <div>Criminal: ${individualNote.text}</div>
                 <div>Date: ${new Date(individualNote.date).toLocaleDateString('en-US')}</div>
-                <button id="deleteNote--${individualNote.id}">Delete</button>
+                <button id="deleteNote--${individualNote.id}">Delete Note</button>
                 </section>
                 `
             }

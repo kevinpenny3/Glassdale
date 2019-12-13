@@ -2,25 +2,40 @@
     display: flex;
     flex-wrap: wrap;
     margin: 6px;
-    justify-content: center;
-
+    justify-content: right;
 }
 
-.witnessContainer div {
-    margin: 10px;
+.witnessFormContainer {
+    display: flex;
+    margin: 1% 1% 1% 5%;
+
 }
 
 .displayedWitness {
+    flex-basis: 20%;
+    height: 100px;
     border: 1px solid black;
     margin: 10px;
-    padding: 1%;
+    box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.2);
 }
 
 .witnessHeader {
     font-weight: bold;
     text-align: center;
     padding: 3px;
+}
 
+.witnessName {
+    padding: 5px 0px 5px 10px;
+    font-weight: bold;
+    background-color:  rgb(22, 22, 58);
+    color: white;
+    margin: 0%;
+}
+
+.witnessStatement {
+    padding: 1% 2% 4% 5%;
+    line-height: 2;
 }
 
 .witnesses__field {
@@ -29,6 +44,7 @@
 }
 
 .witnesses__field button {
+        flex-basis: 40%;
         width: 200px;
         border: none;
         align-content: center;
@@ -36,4 +52,5 @@
         text-align: center;
         font-size: 15px;
         color: white;
+        margin-left: 20px;
 }

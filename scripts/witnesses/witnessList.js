@@ -28,8 +28,8 @@ const WitnessListComponent = () => {
             (individualWitness) => {
                 return  `
                 <section class="displayedWitness">
-                <div>Name: ${individualWitness.name}</div>
-                <div>Statements: ${individualWitness.statements}</div>
+                <div class="witnessName">${individualWitness.name}</div>
+                <div class="witnessStatement">Statements: </br>${individualWitness.statements}</div>
                 </section>
                 `
             }
