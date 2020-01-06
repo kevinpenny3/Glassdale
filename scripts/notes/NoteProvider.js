@@ -1,6 +1,20 @@
 let notes = []
 
 
+export const useNotes = () => notes.slice()
+
+export const editNote = (noteObject) => {
+    return fetch(`http://localhost:3000/notes/${noteObject.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(noteObject)
+    })
+        .then(getNotes)
+
+}
+
 export const saveNote = note => {
     return fetch('http://localhost:3000/notes', {
         method: "POST",
@@ -25,8 +39,4 @@ export const deleteNote = noteId => {
         method: "DELETE"
     })
         .then(getNotes)
-}
-
-export const useNotes = () => {
-    return notes
 }

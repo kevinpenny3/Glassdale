@@ -1,6 +1,7 @@
 .criminalsContainer {
     display: flex;
     flex-wrap: wrap;
+    align-content: center;
 }
 
 .criminal--card {
@@ -8,7 +9,7 @@
     flex-basis: 24%;
     margin: 5px;
     border: 2px solid rgb(22, 22, 58);
-    box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.2);
+    box-shadow: 3px 10px 10px 0 rgba(0,0,0,0.2);
 }
 
 .criminal {
@@ -30,7 +31,7 @@
 
 .left--block {
     margin-left: 3%;
-    flex-basis: 65%;
+    flex-basis: 52%;
 }
 
 
@@ -39,7 +40,7 @@
     border: none;
     background-color:  rgb(22, 22, 58);
     padding: 3%;
-    margin-top: 40%;
+    margin-top: 26%;
     margin-bottom: 10%;
     text-align: center;
     font-size: 15px;
@@ -49,11 +50,11 @@
 aside {
     display: flex;
     flex-wrap: wrap;
-    flex-basis: 30%;
+    flex-basis: 38%;
     margin: 0 3% 3% 3%;
 }
 
 aside img {
-    height: 200px;
-    width: 150px;
+    height: 95%;
+    width: 100%;
 }

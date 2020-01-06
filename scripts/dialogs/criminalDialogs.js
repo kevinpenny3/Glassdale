@@ -1,34 +1,52 @@
-const initializeDetailButtonEvents = () => {
-    // CAN'T TOUCH THIS - START
-    const allCloseButtons = document.querySelectorAll(".button--close")
+import { useCriminals } from "../criminals/CriminalProvider.js"
 
-    for (const btn of allCloseButtons) {
-        btn.addEventListener(
-            "click",
-            theEvent => {
-                const dialogElement = theEvent.target.parentNode
-                dialogElement.close()
+const eventHub = document.querySelector(".container")
+const contentTarget = document.querySelector(".alibiContainer")
+
+
+const DialogComponent = () => {
+
+    eventHub.addEventListener("associateButtonClicked", event => {
+        const criminals = useCriminals()
+        console.log(event.detail.criminalId)
+
+        /**
+         * I've got all the criminals. I've got the id
+         * of the criminal that was clicked.
+         *
+         * How does me get the full criminal object from the array?
+         */
+        const foundCriminal = criminals.find(
+            (singleCriminal) => {
+                return singleCriminal.id === parseInt(event.detail.criminalId, 10)
             }
         )
-    }
 
-
-    const allDialogButtons = document.querySelectorAll("button[id^='criminal--']")
-    console.log(allDialogButtons)
-    for (const btn of allDialogButtons) {
-        btn.addEventListener(
-            "click",
-            evt => {
-                const dialogSiblingSelector = `#${evt.target.id}+dialog`
-                const theDialog = document.querySelector(dialogSiblingSelector)
-                theDialog.showModal()
+        const alibisHTML = foundCriminal.known_associates.map(
+            (singleAssociate) => {
+                return `
+                    <div>
+                        ${singleAssociate.name}: ${singleAssociate.alibi}
+                    </div>
+                `
             }
-        )
+        ).join("")
+
+        document.querySelector(".alibi__text").innerHTML = alibisHTML
+        document.querySelector(".alibies").showModal()
+
+    })
+
+    const render = () => {
+        contentTarget.innerHTML = `
+            <dialog class="alibies">
+                <div class="alibi__text"></div>
+                <button id="closeDialog"></button>
+            </dialog>
+        `
     }
 
-
-
-
-
+    render()
 }
-export default initializeDetailButtonEvents
+
+export default DialogComponent

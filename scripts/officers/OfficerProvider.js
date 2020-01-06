@@ -1,16 +1,20 @@
 let officers = []
 
-const useOfficers = () => {
-    return officers
+const setOfficers = (officerArray) => {
+    officers = officerArray
 }
 
-const getOfficers = () => {
-    return fetch("http://criminals.glassdale.us/officers")
+export const useOfficers = () => officers.slice()
+
+export const getOfficers = () => {
+    // Load database state into application state
+    return fetch("http://criminals.glassdale.us/officers", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+    })
         .then(response => response.json())
-        .then(
-            parsedOfficers => {
-                console.table(parsedOfficers)
-                officers = parsedOfficers.slice()
-            }
-        )
+        .then(setOfficers)
 }

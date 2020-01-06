@@ -1,4 +1,5 @@
-import { useCriminals } from "./CriminalProvider.js";
+import { useCriminals, getCriminalsByOfficer } from "./CriminalProvider.js";
+import { getCriminalsByCrime } from "./CriminalProvider.js";
 import CriminalComponent from "./CriminalComponent.js";
 
 
@@ -25,6 +26,31 @@ const CriminalList = () => {
             render (filteredCriminals)
             console.log(filteredCriminals)
 
+        })
+
+    eventHub.addEventListener('officerSelected', event => {
+            if ("officerName" in event.detail) {
+                if (event.detail.officerName === "0") {
+                    render(appStateCriminals)
+                } else {
+                    const filteredCriminals = getCriminalsByOfficer(event.detail.officerName)
+                    render(filteredCriminals)
+                }
+            }
+        })
+
+        eventHub.addEventListener("click", clickEvent => {
+            if (clickEvent.target.id.startsWith("associates--")) {
+    
+                const [prefix, id] = clickEvent.target.id.split("--")
+    
+                const message = new CustomEvent("associateButtonClicked", {
+                    detail: {
+                        criminalId: id
+                    }
+                })
+                eventHub.dispatchEvent(message)
+            }
         })
 
     const render = (crimeCollection) => {

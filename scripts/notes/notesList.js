@@ -8,6 +8,40 @@ const contentTarget = document.querySelector(".notesContainer")
 const eventHub = document.querySelector(".container")
 
 const NoteListComponent = () => {
+
+    eventHub.addEventListener("noteHasBeenEdited", event => {
+        const updatedNotes = useNotes()
+        render(updatedNotes)
+    })
+
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("editNote--")) {
+            const [deletePrefix, noteId] = clickEvent.target.id.split("--")
+
+            const editEvent = new CustomEvent("editButtonClicked", {
+                detail: {
+                    noteId: noteId
+                }
+            })
+
+            eventHub.dispatchEvent(editEvent)
+        }
+
+        if (clickEvent.target.id.startsWith("deleteNote--")) {
+            const [deletePrefix, noteId] = clickEvent.target.id.split("--")
+
+            deleteNote(noteId).then(
+                () => {
+                    const theNewNotes = useNotes()
+                    render(theNewNotes)
+                }
+            )
+        }
+    })
+
+
+
+
     eventHub.addEventListener("showNoteButtonClicked", event => {
         getNotes().then(
             () => {
@@ -15,6 +49,12 @@ const NoteListComponent = () => {
                 render(allTheNotes)
             }
         )
+    })
+    
+
+    eventHub.addEventListener("newNoteCreated", event => {
+        const allTheNotes = useNotes()
+        render(allTheNotes)
     })
 
     eventHub.addEventListener("click", clickEvent => {
@@ -34,14 +74,6 @@ const NoteListComponent = () => {
         })
 
         eventHub.dispatchEvent(message)
-        
-        
-        /*
-            Invoke the function that performs the delete operation.
-
-            Once the operation is complete you should THEN invoke
-            useNotes() and render the note list again.
-        */
        deleteNote(id).then( () => render(useNotes()) )
     }
 })
@@ -55,8 +87,11 @@ const NoteListComponent = () => {
                 <section class="displayedNotes">
                 <div>Note: ${individualNote.suspect}</div>
                 <div>Criminal: ${individualNote.text}</div>
-                <div>Date: ${new Date(individualNote.date).toLocaleDateString('en-US')}</div>
+                <div>Date: ${new Date(individualNote.date).toLocaleDateString('en-US')}
+                    </br>Time: ${new Date(individualNote.date).toLocaleTimeString("us-en")}
+                </div>
                 <button id="deleteNote--${individualNote.id}">Delete Note</button>
+                <button id="editNote--${individualNote.id}">Edit Note</button>
                 </section>
                 `
             }
