@@ -13,17 +13,8 @@ const CriminalComponent = (criminal) => {
                     <div></br>Term Start: ${new Date(criminal.incarceration.start).toLocaleDateString('en-US')}</div>
                     <div>Term End: ${new Date(criminal.incarceration.end).toLocaleDateString('en-US')}</div>
                 </div>
-                <article class="alibiContainer>
                 <div class="associatesButton">
-                    <button class="criminalDialogButton" id="criminal--${criminalName}">Known Associates</button>
-                    <dialog class="dialog--button" id="details--${criminalName}">
-                    <div>Known Associates</div>
-                        <div>Associate: ${criminal.known_associates.map((individualName) =>{return individualName.name}).join(", ")} </div>
-                        <div>Alibi: ${criminal.known_associates.map((individualAlibi) => {return individualAlibi.alibi}).join(", ")} </div>
-                    <button class="button--close">Close Dialog</button>
-                    </dialog>
-                </div>
-                </article>
+                    <button class="criminalDialogButton" id="associates--${criminal.id}">Known Associates</button>
                 </section>
             <aside class="criminal--picture">
             <div class="criminal--img">

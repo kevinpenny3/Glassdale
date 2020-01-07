@@ -22,6 +22,7 @@ const DialogComponent = () => {
             }
         )
 
+
         const alibisHTML = foundCriminal.known_associates.map(
             (singleAssociate) => {
                 return `
@@ -37,11 +38,18 @@ const DialogComponent = () => {
 
     })
 
+    eventHub.addEventListener("click", event => {
+        if (event.target.classList.contains("button--close")){
+            const theDialog = event.target.parentNode
+            theDialog.close();
+        }
+    })
+
     const render = () => {
         contentTarget.innerHTML = `
             <dialog class="alibies">
                 <div class="alibi__text"></div>
-                <button id="closeDialog"></button>
+                <button class="button--close" id="closeDialog">Close Details</button>
             </dialog>
         `
     }
