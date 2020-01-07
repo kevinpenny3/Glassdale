@@ -11,6 +11,8 @@ import witnessComponent from "./witnesses/witnessComponent.js";
 import OfficerSelect from "./officers/officerSelect.js";
 import { getOfficers } from "./officers/OfficerProvider.js";
 import DialogComponent from "./dialogs/criminalDialogs.js";
+import FilterButton from "./filters/filter.js";
+
 
 
 
@@ -39,3 +41,4 @@ getWitnesses().then(
     ).then(
     () => witnessComponent()
     )
+FilterButton()
